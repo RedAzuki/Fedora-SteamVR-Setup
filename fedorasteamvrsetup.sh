@@ -14,9 +14,10 @@ setupFedora() {
   dnf swap -y ffmpeg-free ffmpeg --allowerasing
 
   echo "Install Restricted Codecs"
+  dnf group install multimedia
   dnf update -y @multimedia --setopt="install_weak_deps=False" --exclude=PackageKit-gstreamer-plugin
 
-  echo "Swap to Nonfree AMD Hardware codecs"
+  echo "Swap to Nonfree mesa drivers"
   dnf swap -y mesa-va-drivers mesa-va-drivers-freeworld
   dnf swap -y mesa-vdpau-drivers mesa-vdpau-drivers-freeworld
   dnf swap -y mesa-vulkan-drivers mesa-vulkan-drivers-freeworld
